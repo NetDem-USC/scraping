@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#Parse a vector of URLs, and put them into a dataframe\nparse_urls <- function(urls)\n{\n  require(rvest)\n  url_df <- url_parse(urls)\n  url_df$fulL_url <- urls\n  return url_df\n}\n\n#Download the html of a URL with a given filename\ndownload_url <- function(url,filename)\n{\n  writeLines(readlines(url),filename)\n}\n\n# use this for faster download?\n#browseURL(\"https://github.com/jeroenooms/curl/blob/master/examples/sitemap.R\")\n\n\n## function to parse downloaded htmls\nparse_html <- function(filename) {\n  # require packages\n  require(xml2)\n  require(rvest)\n  require(boilerpipeR)\n  # create filename\n  # parse file\n  url_parsed <- read_html(filename)\n  url_text <- html_text(url_parsed) #what is this?\n  try(main_text <- ArticleExtractor(url_text, asText = FALSE), silent = TRUE)\n  # export file\n  writeLines(main_text,filename)\n}\n",
+    "created" : 1495855541702.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2414519927",
+    "id" : "B9F80988",
+    "lastKnownWriteTime" : 1496112069,
+    "last_content_update" : 1496112069362,
+    "path" : "~/Desktop/Projects/scraping/SCRAP/R/parse.R",
+    "project_path" : "R/parse.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "library(boilerpipeR) # this grabs main text, throws out extraneous garbage from web pages\nlibrary(RCurl)\n\n#load(\"unique_urls.RData\")\nurls100 <- readLines(\"unique_urls_100k.txt\") # , stringsAsFactors = FALSE\n\nhead(urls100)\ntail(urls100)\n\nurls100 <- gsub(\"\\\"\", \"\", urls100)\n\nsetwd(\"text_try3\")\nfor(i in 1:34175) { #length(urls100)  11655 23069 33000 34176\n  \n  page <- \"\"\n  url <- urls100[i]\n  try(page <- getURLContent(paste0(\"http://\", url), .opts=curlOptions(followlocation=TRUE, timeout=2, maxredirs=20)), silent = TRUE)\n  try(maintext <- ArticleExtractor(page, asText = TRUE), silent = TRUE)\n  \n  writeLines(maintext, paste0(\"url_\", i, \".txt\")) # saving to individual text files\n  \n}\n",
+    "created" : 1495755734466.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2336785551",
+    "id" : "D6CCB3D8",
+    "lastKnownWriteTime" : 1495754356,
+    "last_content_update" : 1495754356,
+    "path" : "~/Desktop/Projects/scraping/scraper.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

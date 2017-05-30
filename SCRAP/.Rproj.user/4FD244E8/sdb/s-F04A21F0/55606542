@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "Package: SCRAP\nType: Package\nTitle: What the Package Does (Title Case)\nVersion: 0.1.0\nAuthor: Who wrote it\nMaintainer: Who to complain to <yourfault@somewhere.net>\nDescription: More about what it does (maybe more than one line)\nLicense: What license is it under?\nLazyData: TRUE\n\n\n\nREQUIRE: urltools\n         digest\n         curl\n         xml2\n         rvest\n         boilerpipeR\n",
+    "created" : 1495839282310.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "55820097",
+    "id" : "55606542",
+    "lastKnownWriteTime" : 1495855297,
+    "last_content_update" : 1495855297180,
+    "path" : "~/Desktop/Projects/scraping/SCRAP/DESCRIPTION",
+    "project_path" : "DESCRIPTION",
+    "properties" : {
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "dcf"
+}

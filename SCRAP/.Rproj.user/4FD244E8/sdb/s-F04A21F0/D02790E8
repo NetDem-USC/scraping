@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#OXYGEN HEADERS\n\n\nclassify_urls <- function(urls) {\n  # load packages\n  require(urltools)\n  require(digest)\n  # parse url\n  urls_df <- url_parse(urls)\n  # store full url\n  urls_df$url_full <- urls\n  # store unique_id\n  urls_df$uid <- sapply(urls_df$url_full, digest)\n  # generate indicators\n  urls_df$isMainpage <- is.na(urls_df$path)\n  urls_df$isSurvey <- str_detect(urls_df$domain, \"survey\") | str_detect(urls_df$path, \"survey\")\n  urls_df$isSurveyPlatform <- str_detect(urls_df$domain, \"samplicio.us|yougov|mturk.com|myview.com|zoompanel.com|mintvine.com|sample-cube.com|springboardamerica.com|quickrewards.net|sassieshop.com|lb.ocucom.com|oneopinion.com\")\n  urls_df$isRewardingPlatform <- str_detect(urls_df$domain, \"swagbucks.com|mypoints.com|neobux.com|clixsense.com|inboxdollars.com|prizegrab.com|crowdtap.com|instagc.com|comparteunclic.com|ncponline.com\")\n  urls_df$isSearchEngine <- urls_df$domain %in% c(\"google.com\", \"bing.com\", \"search.yahoo.com\", \"search.aol.com\", \"duckduckgo.com\")\n  urls_df$isSearch <- str_detect(urls_df$domain, \"search\") | str_detect(urls_df$path, \"search\")\n  urls_df$isMail <- str_detect(urls_df$domain, \"mail|outlook\")\n  urls_df$isGoogle <- str_detect(urls_df$domain, \"google\")\n  urls_df$isFacebook <- str_detect(urls_df$domain, \"facebook\")\n  urls_df$isTwitter <- str_detect(urls_df$domain, \"twitter\")\n  urls_df$isGooglePlus <- str_detect(urls_df$domain, \"plus.google\")\n  urls_df$isYouTube <- str_detect(urls_df$domain, \"youtube\")\n  urls_df$isInstagram <- str_detect(urls_df$domain, \"instagram\")\n  urls_df$isTumblr <- str_detect(urls_df$domain, \"tumblr\")\n  urls_df$isShopping <- str_detect(urls_df$domain, \"amazon.com|ebay.com|amazon.com|paypal.com|walmart.com|pinterest.com|etsy.com\")\n  urls_df$isGaming <- str_detect(urls_df$domain, \"player.pureplay.com|pogo.com|worldwinner.com|gsn.com|football.fantasysports.yahoo.com\")\n  urls_df$isPorn <- str_detect(urls_df$domain, \"xhamster.com|youporn.com|pornhub.com\")\n  urls_df$isWikipedia <-  str_detect(urls_df$domain, \"wikipedia\")\n  urls_df$isResidual <- str_detect(urls_df$domain, \"ab.entertainmentcrave.com|netflix.com|ss.ktrmr.com|pch.com|sp004.pcrint.net|person.ancestry.com|imdb.com|prod70.datacollectionsite.com|spectrum.pch.com|realtor.com|login.live.com|zillow.com\")\n  news <- c(\"huffingtonpost.com\", \"washingtonpost.com\", \"nytimes.com\", \"foxnews.com\", \"dailykos.com\", \"drudgereport.com\", \"breitbart.com\")\n  urls_df$isNews <- urls_df$domain %in% news\n  # return output\n  return(urls_df)\n}\n",
+    "created" : 1495855427794.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1110609287",
+    "id" : "D02790E8",
+    "lastKnownWriteTime" : 1495855496,
+    "last_content_update" : 1495855496599,
+    "path" : "~/Desktop/Projects/scraping/SCRAP/R/classify.R",
+    "project_path" : "R/classify.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
