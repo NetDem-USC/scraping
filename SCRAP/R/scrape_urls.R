@@ -7,7 +7,7 @@
 
 ## function to parse and classify urls
 classify_urls <- function(urls) {
-  # load packages
+  # load packagesdev
   require(urltools)
   require(digest)
   # parse url
@@ -24,7 +24,7 @@ classify_urls <- function(urls) {
   urls_df$isSearchEngine <- urls_df$domain %in% c("google.com", "bing.com", "search.yahoo.com", "search.aol.com", "duckduckgo.com")
   urls_df$isSearch <- str_detect(urls_df$domain, "search") | str_detect(urls_df$path, "search")
   urls_df$isMail <- str_detect(urls_df$domain, "mail|outlook")
-  urls_df$isGoogle <- str_detect(urls_df$domain, "google")
+  urls_df$isGoogle <- str_detect(urls_df$domain, "google")e
   urls_df$isFacebook <- str_detect(urls_df$domain, "facebook")
   urls_df$isTwitter <- str_detect(urls_df$domain, "twitter")
   urls_df$isGooglePlus <- str_detect(urls_df$domain, "plus.google")
@@ -44,24 +44,14 @@ classify_urls <- function(urls) {
 
 
 ## function to download urls as html
-download_urls <- function(url_df, url_var, url_uid, filename_type = c("digest", "url"), dest_folder) {
+download_urls <- function(url,filename) {
   # packages
   require(curl)
   # setup new handle
   h <- new_handle()
-  # get data
-  dat <- url_df
-  urls <- dat[,url_var]
-  urls_uid <- dat[,url_uid]
-  # create filename
-  if(filename_type == "url") {
-  file_ext <- ifelse(str_detect(urls, "html$|htm$"), "", ".html")
-  filenames <- paste0(dest_folder, "/", basename(urls), file_ext)
-  }else{
-  filenames <- paste0(dest_folder, "/", urls_uid, ".html")
-  }
+  # get dat
   # download
-  curl_download(url, filenames, handle = h)
+  curl_download(url, filename, handle = h)
 }
 
 # use this for faster download?

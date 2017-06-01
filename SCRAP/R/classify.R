@@ -12,7 +12,7 @@ classify_urls <- function(urls) {
   # store unique_id
   urls_df$uid <- sapply(urls_df$url_full, digest)
   # generate indicators
-  urls_df$isMainpage <- is.na(urls_df$path)
+  urls_df["isMainpage"] <- is.na(urls_df$path)
   urls_df$isSurvey <- str_detect(urls_df$domain, "survey") | str_detect(urls_df$path, "survey")
   urls_df$isSurveyPlatform <- str_detect(urls_df$domain, "samplicio.us|yougov|mturk.com|myview.com|zoompanel.com|mintvine.com|sample-cube.com|springboardamerica.com|quickrewards.net|sassieshop.com|lb.ocucom.com|oneopinion.com")
   urls_df$isRewardingPlatform <- str_detect(urls_df$domain, "swagbucks.com|mypoints.com|neobux.com|clixsense.com|inboxdollars.com|prizegrab.com|crowdtap.com|instagc.com|comparteunclic.com|ncponline.com")
@@ -34,5 +34,5 @@ classify_urls <- function(urls) {
   news <- c("huffingtonpost.com", "washingtonpost.com", "nytimes.com", "foxnews.com", "dailykos.com", "drudgereport.com", "breitbart.com")
   urls_df$isNews <- urls_df$domain %in% news
   # return output
-  return(urls_df)
+  return(list(urls_df))
 }
