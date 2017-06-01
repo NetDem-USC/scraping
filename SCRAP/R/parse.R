@@ -1,5 +1,10 @@
 #Parse a vector of URLs, and put them into a dataframe
-
+parse_urls <- function(urls,url_df)
+{
+  url_df <- url_parse(urls)
+  url_df$full_url <- urls
+  return(url_df)
+}
 #Download the html of a URL with a given filename
 download_url <- function(url,filename) {
   # packages
