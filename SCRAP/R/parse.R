@@ -18,15 +18,15 @@ download_url <- function(url,filename) {
 
 
 ## function to parse downloaded htmls
-parse_html <- function(url, filename) {
+parse_html <- function(url) {
   # require packages
   require(xml2)
   require(rvest)
   require(boilerpipeR)
   # parse file
-  url_parsed <- read_html(url)
+  url_parsed <- read_html(filename)
   url_text <- html_text(url_parsed) #what is this?
-  try(main_text <- ArticleExtractor(url_text, asText = FALSE), silent = TRUE)
+  try(main_text <- ArticleExtractor(url, asText = FALSE), silent = TRUE)
   # export file
   writeLines(main_text,filename)
 }
