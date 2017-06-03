@@ -32,8 +32,10 @@ for (i in 1:nrow(urls_df)){
 }
 
 #POSSIBLE ERROR
-#cnn_extract contains nothing
-cnn_extract <-ArticleExtractor("http://www.cnn.com/2017/06/02/us/who-commits-hate-crimes/index.html")
+#main_text contains extra text besides article.
+#Zeit_online contains only half of the article.
+main_text <- ArticleExtractor(html_text(read_html("http://money.cnn.com/2017/05/31/news/economy/china-europe-eu-trump-us-trade/index.html")),asText=TRUE)
+zeit_online <- ArticleExtractor("http://www.zeit.de/politik/ausland/2017-05/donald-trump-pariser-klimabkommen-ausstieg-deutschland-verantwortung",asText = FALSE)
 
 
 
