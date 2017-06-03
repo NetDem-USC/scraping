@@ -19,15 +19,16 @@ urls_df <- classify_urls(urls)
 urls_df <- urls_df[urls_df$isNews==TRUE,]
 
 # 2) download URLs
-for (url in urls_df$url_full){
-	filename <- paste0("test/urls/", url)
-	download_urls(url, filename)
+urls_df$filename <- paste0("test/urls/", gsub("/", "_", urls_df$url_full))
+
+for (i in 1:nrow(urls_df)){
+	download_url(urls_df$url_full[i], urls_df$filename[i])
 }
 
 # 3) parse URLs
-fls <- list.files("test/urls", full.names=TRUE)
-for (f in fls){
-	parse_html(url, "test/urls_parsed")
+urls_df$output <- paste0("test/urls_parsed/", gsub("/", "_", urls_df$url_full), ".txt")
+for (i in 1:nrow(urls_df)){
+	parse_html(urls_df$filename[i], urls_df$output[i])
 }
 
 
