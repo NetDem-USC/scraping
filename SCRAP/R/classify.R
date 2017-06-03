@@ -1,10 +1,10 @@
 #OXYGEN HEADERS
-
+#' @import urltools
+#' @importFrom digest digest
+#' @import stringr
 
 classify_urls <- function(urls, urls_df) {
-  # load packagesdev
-  require(urltools)
-  require(digest)
+
   # parse url
   urls_df <- url_parse(urls)
   # store full url
@@ -31,8 +31,7 @@ classify_urls <- function(urls, urls_df) {
   urls_df$isPorn <- str_detect(urls_df$domain, "xhamster.com|youporn.com|pornhub.com")
   urls_df$isWikipedia <-  str_detect(urls_df$domain, "wikipedia")
   urls_df$isResidual <- str_detect(urls_df$domain, "ab.entertainmentcrave.com|netflix.com|ss.ktrmr.com|pch.com|sp004.pcrint.net|person.ancestry.com|imdb.com|prod70.datacollectionsite.com|spectrum.pch.com|realtor.com|login.live.com|zillow.com")
-  news <- c("huffingtonpost.com", "washingtonpost.com", "nytimes.com", "foxnews.com", "dailykos.com", "drudgereport.com", "breitbart.com")
-  urls_df$isNews <- urls_df$domain %in% news
+  urls_df$isNews <- str_detect(urls_df$domain, "huffingtonpost.com|washingtonpost.com|nytimes.com|foxnews.com|dailykos.com|drudgereport.com|breitbart.com|spiegel.de|sueddeutsche.de|focus.de|bild.de|zeit.de|welt.de|t-online.de")
   # return output
   return(urls_df)
 }

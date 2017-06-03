@@ -11,4 +11,6 @@ Suggests: testthat
 Depends: rvest,
         boilerpipeR,
         urltools,
-        xml2
+        xml2,
+        stringr,
+        digest
