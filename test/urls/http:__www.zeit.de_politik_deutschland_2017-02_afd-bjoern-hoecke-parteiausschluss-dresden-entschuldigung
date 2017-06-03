@@ -464,7 +464,7 @@ window.rawrConfig = {
 
 window.rawrConfig = window.rawrConfig || {};
 window.rawrConfig.sso = function() {
-    this.remote_auth = "e30=, 2273ec3f9b85338cbf0f73673b7e0c1b52b7fbfc, 1496449732";
+    this.remote_auth = "e30=, 2ba237da510312f79dfab03e846826c1ec929fed, 1496449930";
     this.name = "ZEIT ONLINE";
     this.icon = "http://www.zeit.de/favicon.ico";
     this.loginUrl = "https://meine.zeit.de/anmelden?url=http%3A%2F%2Fwww.zeit.de%2Fpolitik%2Fdeutschland%2F2017-02%2Fafd-bjoern-hoecke-parteiausschluss-dresden-entschuldigung&entry_service=sonstige";
@@ -809,18 +809,18 @@ window.rawrConfig.sso = function() {
     <span class="nextread-advertisement__label">Anzeige</span>
     <div class="nextread-advertisement__container-outer">
         <div class="nextread-advertisement__container-inner">
-            <h2 class="nextread-advertisement__title">Der ZEIT Stellenmarkt</h2>
-            <p class="nextread-advertisement__text">Jetzt Jobsuche starten und Stellenangebote mit Perspektive entdecken.</p>
+            <h2 class="nextread-advertisement__title">Kultur-Newsletter</h2>
+            <p class="nextread-advertisement__text">Was die Musik-, Kunst- und Literaturszene bewegt. Jede Woche kostenlos per E-Mail.</p>
                 <figure class="nextread-advertisement__media  scaled-image variant variant--super" itemscope itemtype="http://schema.org/ImageObject">
                 <!--[if gt IE 8]><!-->
-        <noscript data-src="http://img.zeit.de/angebote/bilder-verlagsnextreads/1200x800-stellenmarkt-2/super__620x413">
+        <noscript data-src="http://img.zeit.de/angebote/bilder-verlagsnextreads/kultur-newsletter-nextread/super__620x413">
         <!--<![endif]-->
             <div class="nextread-advertisement__media-container ">
-                    <a class="" title="" href="http://jobs.zeit.de/?wt_zmc=fix.int.zonpmr.politik-ressort.nextread.stellenmarkt_startseite.nextread.blonde-frau.x&amp;utm_medium=fix&amp;utm_source=politik-ressort_zonpmr_int&amp;utm_campaign=nextread&amp;utm_content=stellenmarkt_startseite_nextread_blonde-frau_x" data-id="articlebottom.publisher-nextread...image">
+                    <a class="" title="" href="http://marktplatz.zeit.de/kulturveranstaltungen/newsletter?wt_zmc=dis.int.zonpmr.kulturveranstaltungen.kulturnewsletter.newsletter-anmeldung.nextread.newsletter.x&amp;utm_medium=dis&amp;utm_source=kulturveranstaltungen_zonpmr_int&amp;utm_campaign=kulturnewsletter&amp;utm_content=newsletter-anmeldung_nextread_newsletter_x" data-id="articlebottom.publisher-nextread...image">
                         <img class="nextread-advertisement__media-item"
                      alt=""
-                     src="http://img.zeit.de/angebote/bilder-verlagsnextreads/1200x800-stellenmarkt-2/super__620x413"
-                     data-src="http://img.zeit.de/angebote/bilder-verlagsnextreads/1200x800-stellenmarkt-2/super"
+                     src="http://img.zeit.de/angebote/bilder-verlagsnextreads/kultur-newsletter-nextread/super__620x413"
+                     data-src="http://img.zeit.de/angebote/bilder-verlagsnextreads/kultur-newsletter-nextread/super"
                      data-ratio="1.5"
                                                                  >
                 
@@ -830,11 +830,11 @@ window.rawrConfig.sso = function() {
         <!--[if gt IE 8]><!-->
         </noscript>
         <!--<![endif]-->
-        <meta itemprop="url" content="http://img.zeit.de/angebote/bilder-verlagsnextreads/1200x800-stellenmarkt-2/super__620x413">
+        <meta itemprop="url" content="http://img.zeit.de/angebote/bilder-verlagsnextreads/kultur-newsletter-nextread/super__620x413">
         <meta itemprop="width" content="620">
         <meta itemprop="height" content="413">
         </figure>
-            <a class="nextread-advertisement__button" title="Der ZEIT Stellenmarkt: Jetzt Jobsuche starten und Stellenangebote mit Perspektive entdecken." href="http://jobs.zeit.de/?wt_zmc=fix.int.zonpmr.politik-ressort.nextread.stellenmarkt_startseite.nextread.blonde-frau.x&amp;utm_medium=fix&amp;utm_source=politik-ressort_zonpmr_int&amp;utm_campaign=nextread&amp;utm_content=stellenmarkt_startseite_nextread_blonde-frau_x" style="background-color:##168750" data-id="articlebottom.publisher-nextread...button">Job finden</a>
+            <a class="nextread-advertisement__button" title="Kultur-Newsletter: Was die Musik-, Kunst- und Literaturszene bewegt. Jede Woche kostenlos per E-Mail." href="http://marktplatz.zeit.de/kulturveranstaltungen/newsletter?wt_zmc=dis.int.zonpmr.kulturveranstaltungen.kulturnewsletter.newsletter-anmeldung.nextread.newsletter.x&amp;utm_medium=dis&amp;utm_source=kulturveranstaltungen_zonpmr_int&amp;utm_campaign=kulturnewsletter&amp;utm_content=newsletter-anmeldung_nextread_newsletter_x" style="background-color:#c134bc" data-id="articlebottom.publisher-nextread...button">Hier anmelden</a>
         </div>
     </div>
 </article>
@@ -1564,13 +1564,13 @@ Das ging es allerdings um viel weniger krasse Aussagen.</p>
     img.src = 'http://cc.zeit.de/cc.gif?banner-channel=politik/deutschland/article' + '&r=' + encodeURIComponent( document.referrer ) + '&rand=' + Math.round( Math.random() * 100000000 );
 </script>
 <noscript>
-    <img src="http://cc.zeit.de/cc.gif?banner-channel=politik/deutschland/article&amp;r=&amp;rand=50423560" class="visually-hidden" alt="">
+    <img src="http://cc.zeit.de/cc.gif?banner-channel=politik/deutschland/article&amp;r=&amp;rand=57078016" class="visually-hidden" alt="">
 </noscript>                    
         
         <div id="login-state" data-sso-id="" data-sso-url=""></div>
 <noscript>
     <div>
-        <img alt="" width="1" height="1" src="http://zeit01.webtrekk.net/981949533494636/wt.pl?p=434,redaktion.politik.deutschland..article.zede%7Cwww.zeit.de/politik/deutschland/2017-02/afd-bjoern-hoecke-parteiausschluss-dresden-entschuldigung,0,0,0,0,0,0,0,0&amp;cg1=redaktion&amp;cg2=article&amp;cg3=politik&amp;cg4=zede&amp;cg5=deutschland&amp;cg6=&amp;cg7=afd-bjoern-hoecke-parteiausschluss-dresden-entschuldigung&amp;cg8=politik/deutschland/article&amp;cg9=2017-02-18&amp;cp1=kai+biermann&amp;cp2=politik/deutschland/bild-text&amp;cp3=1/1&amp;cp4=politik%3Bafd-parteiausschluss%3Bbj%C3%B6rn+h%C3%B6cke%3Bdresden%3Bth%C3%BCringen%3Bholocaust%3Bopfer%3Bdenkmal&amp;cp5=2017-02-18+13%3A51%3A01.900770%2B01%3A00&amp;cp6=4773&amp;cp7=&amp;cp8=zede&amp;cp9=politik/deutschland/article&amp;cp10=yes&amp;cp11=&amp;cp12=desktop.site&amp;cp13=stationaer&amp;cp14=friedbert&amp;cp15=&amp;cp25=original&amp;cp26=article.article&amp;cp27=video.4/seite-1&amp;cp28=free&amp;cp29=unfeasible&amp;cp30=open&amp;cp32=unfeasible&amp;cp33=jobs.zeit.de/&amp;cp23=nicht_angemeldet&amp;cd=" />
+        <img alt="" width="1" height="1" src="http://zeit01.webtrekk.net/981949533494636/wt.pl?p=434,redaktion.politik.deutschland..article.zede%7Cwww.zeit.de/politik/deutschland/2017-02/afd-bjoern-hoecke-parteiausschluss-dresden-entschuldigung,0,0,0,0,0,0,0,0&amp;cg1=redaktion&amp;cg2=article&amp;cg3=politik&amp;cg4=zede&amp;cg5=deutschland&amp;cg6=&amp;cg7=afd-bjoern-hoecke-parteiausschluss-dresden-entschuldigung&amp;cg8=politik/deutschland/article&amp;cg9=2017-02-18&amp;cp1=kai+biermann&amp;cp2=politik/deutschland/bild-text&amp;cp3=1/1&amp;cp4=politik%3Bafd-parteiausschluss%3Bbj%C3%B6rn+h%C3%B6cke%3Bdresden%3Bth%C3%BCringen%3Bholocaust%3Bopfer%3Bdenkmal&amp;cp5=2017-02-18+13%3A51%3A01.900770%2B01%3A00&amp;cp6=4773&amp;cp7=&amp;cp8=zede&amp;cp9=politik/deutschland/article&amp;cp10=yes&amp;cp11=&amp;cp12=desktop.site&amp;cp13=stationaer&amp;cp14=friedbert&amp;cp15=&amp;cp25=original&amp;cp26=article.article&amp;cp27=video.4/seite-1&amp;cp28=free&amp;cp29=unfeasible&amp;cp30=open&amp;cp32=unfeasible&amp;cp33=marktplatz.zeit.de/kulturveranstaltungen/newsletter&amp;cp23=nicht_angemeldet&amp;cd=" />
     </div>
 </noscript>
         
@@ -1625,7 +1625,7 @@ Das ging es allerdings um viel weniger krasse Aussagen.</p>
             29: "unfeasible",
             30: "open",
             32: window.location.protocol.replace(':', ''),
-            33: "jobs.zeit.de/"
+            33: "marktplatz.zeit.de/kulturveranstaltungen/newsletter"
             };
 
         
