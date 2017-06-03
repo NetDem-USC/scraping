@@ -31,6 +31,10 @@ for (i in 1:nrow(urls_df)){
 	parse_html(urls_df$filename[i], urls_df$output[i])
 }
 
+#POSSIBLE ERROR
+#cnn_extract contains nothing
+cnn_extract <-ArticleExtractor("http://www.cnn.com/2017/06/02/us/who-commits-hate-crimes/index.html")
+
 
 
 
