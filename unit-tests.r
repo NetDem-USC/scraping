@@ -2,6 +2,7 @@ setwd("~/git/scraping")
 
 # install current version of R package
 library(devtools)
+document("SCRAP")
 install("SCRAP")
 library(SCRAP)
 
