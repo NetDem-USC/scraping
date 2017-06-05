@@ -1,11 +1,33 @@
-#OXYGEN HEADERS
+#' @rdname classify_urls
+#' @export 
+
+#' @title
+#' Take vector of URLs and classify into URL types
+
+#' @description
+#' This function takes a vector of URLs and will use a dictionary
+#' of domains to classify into different types: survey platforms,
+#' mail, google, social media, etc. and most importantly, news sites.
+
+#' @details
+#' Eventually, we will have an argument that will contain a dictionary of
+#' URL domains and their corresponding type. For now, everything is
+#' just hard-coded in the function.
+#' It will return a data frame with one row per URL and Boolean variables 
+#' indicating whether the URL corresponds to each type.
+
+#' @author
+#' Anthony Ramos, Simon Munzert, Pablo Barbera
+
+#' @param urls Vector with URLs.
+
 #' @import urltools
 #' @importFrom digest digest
 #' @import stringr
 
-classify_urls <- function(urls, urls_df) {
+classify_urls <- function(urls) {
 
-  # parse url
+  # parse urls
   urls_df <- url_parse(urls)
   # store full url
   urls_df$url_full <- urls
@@ -31,7 +53,7 @@ classify_urls <- function(urls, urls_df) {
   urls_df$isPorn <- str_detect(urls_df$domain, "xhamster.com|youporn.com|pornhub.com")
   urls_df$isWikipedia <-  str_detect(urls_df$domain, "wikipedia")
   urls_df$isResidual <- str_detect(urls_df$domain, "ab.entertainmentcrave.com|netflix.com|ss.ktrmr.com|pch.com|sp004.pcrint.net|person.ancestry.com|imdb.com|prod70.datacollectionsite.com|spectrum.pch.com|realtor.com|login.live.com|zillow.com")
-  urls_df$isNews <- str_detect(urls_df$domain, "huffingtonpost.com|washingtonpost.com|nytimes.com|foxnews.com|dailykos.com|drudgereport.com|breitbart.com|spiegel.de|sueddeutsche.de|focus.de|bild.de|zeit.de|welt.de|t-online.de")
+  urls_df$isNews <- str_detect(urls_df$domain, "cnn.com|huffingtonpost.com|washingtonpost.com|nytimes.com|foxnews.com|dailykos.com|drudgereport.com|breitbart.com|spiegel.de|sueddeutsche.de|focus.de|bild.de|zeit.de|welt.de|t-online.de")
   # return output
   return(urls_df)
 }

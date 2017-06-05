@@ -14,3 +14,4 @@ Depends: rvest,
         stringr,
         digest,
         readr
+RoxygenNote: 6.0.1

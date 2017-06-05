@@ -1,3 +1,5 @@
+#' @export
+
 #Parse a vector of URLs, and put them into a dataframe
 parse_urls <- function(urls,url_df)
 {
@@ -5,6 +7,8 @@ parse_urls <- function(urls,url_df)
   url_df$full_url <- urls
   return(url_df)
 }
+
+#' @export
 #Download the html of a URL with a given filename
 download_url <- function(url,filename) {
   # packages
@@ -18,6 +22,8 @@ download_url <- function(url,filename) {
 
 #' @import boilerpipeR
 #' @import readr
+
+#' @export
 
 ## function to parse downloaded htmls
 parse_html <- function(filename, output) {

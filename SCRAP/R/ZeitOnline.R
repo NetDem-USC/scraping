@@ -1,3 +1,5 @@
+#' @export
+
 scrape.ZeitHeadlines <- function()
 {
   require(rvest)
