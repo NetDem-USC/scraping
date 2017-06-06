@@ -1,6 +1,9 @@
+#' @rdname Parse.R
 #' @export
 
-#Parse a vector of URLs, and put them into a dataframe
+#' @description Parse a vector of URLs, and put them into a dataframe.
+#' @param vector of urls, and dataframe to put results in.
+#'
 parse_urls <- function(urls,url_df)
 {
   url_df <- url_parse(urls)
