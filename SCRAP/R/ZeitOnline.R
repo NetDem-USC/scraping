@@ -9,6 +9,7 @@
 #' columns, titles and links.
 
 #' @param none
+#' @export
 scrape.ZeitHeadlines <- function()
 {
   require(rvest)
@@ -22,13 +23,13 @@ scrape.ZeitHeadlines <- function()
 
 
 #' @param string containing URL of article from ZeitOnline
-
 #' @description
 #' This function takes the title, summary, and main text from an article from Zeit Online, and returns
 #' a vector with the date,title, and summary.
 #'
 #' @details
 #' Return values will eventually contain main text
+#' @export
 scrapeZeitArticles <- function(url)
 {
 

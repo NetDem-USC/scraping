@@ -12,7 +12,8 @@ parse_urls <- function(urls,url_df)
 }
 
 #' @export
-#Download the html of a URL with a given filename
+#' @description downloads the HTML of a URL into a given file name
+#' @param string of url, string of file name
 download_url <- function(url,filename) {
   # packages
   require(curl)
@@ -27,7 +28,8 @@ download_url <- function(url,filename) {
 #' @import readr
 
 #' @export
-
+#' @description takes in a file name to download, and downloads it to output
+#' @param string of name of file to download, string of output file
 ## function to parse downloaded htmls
 parse_html <- function(filename, output) {
   # parse file
