@@ -12,7 +12,7 @@ parse_urls <- function(urls,url_df)
 }
 
 #' @export
-#' @description downloads the HTML of a URL into a given file name
+#' @description downloads the HTML of URLs into a given file name
 #' @param string of url, string of file name
 download_url <- function(url,filename) {
   # packages
