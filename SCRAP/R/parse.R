@@ -14,11 +14,21 @@ parse_urls <- function(urls,url_df)
 #' @export
 #' @description downloads the HTML of URLs into a given file name
 #' @param string of url, string of file name
-download_url <- function(url,filename) {
+download_url <- function(url) {
   # packages
   require(curl)
   h <- new_handle()
-  curl_download(url, filename, handle = h)
+  curl_download(url, paste0("~/Desktop/",gsub('/',"-",url),".txt"), handle = h)
+}
+#' @export 
+#' @description removes a vector of URLS in parallel, by default uses 2 cores for a dual-core processor
+#' @param a vector of URLs
+download_in_parallel <- function(urls) {
+  require(parallel)
+  c <- makeCluster(2)
+  clusterExport(c,"download_url")
+  parLapply(c,urls,function(x) download_url(x))
+  
 }
 
 # use this for faster download?
