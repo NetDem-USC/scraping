@@ -2,18 +2,10 @@
 % Please edit documentation in R/SpiegelOnline.R
 \name{scrape.SpiegelOnline}
 \alias{scrape.SpiegelOnline}
-\alias{scrape.SpiegelArticle}
-\title{Package for Scraping articles off of spiegel online}
+\title{scrape.SpiegelOnline}
 \usage{
 scrape.SpiegelOnline()
-
-scrape.SpiegelArticle(url)
-}
-\arguments{
-\item{string}{containing url of function}
 }
 \description{
 scrapes headlines off of spiegel online home page
-
-Scrapes article date, content, and summary from spiegel article
 }

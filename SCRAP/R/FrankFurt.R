@@ -1,8 +1,5 @@
-#' @rdname Frankfurt.R
-#' 
-#' 
-#' @title This package is for scraping the Zeit online front page
-#' 
+
+#' @title Scrape Headlines from Frankfurt Allgemaine
 #' @description Scrapes front page headlines from Frankfurt Allgemaine
 
 getFrankfurtHeadlines <- function()
@@ -16,9 +13,9 @@ getFrankfurtHeadlines <- function()
 
 }
 
-#' @rdname Frankfurt.R
+#' @title Scrape information from a Frankfurt Allegmaine Article
 #' @description scrapes the date, summary, title, and main text from an article on Frankfurt Allgemaine
-#' @param url string
+#' @param url string of article url
 #' @return dataframe with date, headline, summary and maintext as columns
 
 getFrankfurtArticle <- function(url)

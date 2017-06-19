@@ -1,5 +1,4 @@
-#' @rdname Parse.R
-#' @title package containing parsing and downloading functions
+#' @title Parse URLs
 
 #' @export
 
@@ -14,7 +13,7 @@ parse_urls <- function(urls,url_df)
 }
 
 
-#' @rdname Parse.R
+#' @title Download URLs
 #' @description downloads the HTML of URLs into a given file name
 #' @param string of url, string of file name
 download_url <- function(url) {
@@ -23,7 +22,7 @@ download_url <- function(url) {
   h <- new_handle()
   curl_download(url, paste0("~/Desktop/",gsub('/',"-",url),".txt"), handle = h)
 }
-#' @rdname Parse.R
+#' @title Parallel Download URLs
 #' @description removes a vector of URLS in parallel, by default uses 2 cores for a dual-core processor
 #' @param a vector of URLs
 download_in_parallel <- function(urls) {
@@ -39,7 +38,7 @@ download_in_parallel <- function(urls) {
 
 #' @import boilerpipeR
 #' @import readr
-#' @rdname Parse.R
+#' @title HTML Article Extraction
 #' @description takes in a file name to download, and downloads it to output
 #' @param string of name of file to download, string of output file
 ## function to parse downloaded htmls

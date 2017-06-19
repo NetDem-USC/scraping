@@ -1,8 +1,7 @@
-#' @rdname Spiegel
-#' @title Package for Scraping articles off of spiegel online
 
 
-#' @name scrape.SpiegelOnline
+
+#' @title scrape.SpiegelOnline
 #' @description scrapes headlines off of spiegel online home page
 scrape.SpiegelOnline <- function() {
 
@@ -16,10 +15,9 @@ scrape.SpiegelOnline <- function() {
   doc %>% html_nodes(".column-wide h2 a") %>% xml_attr("title")
 }
 
-#' @rdname Spiegel
-#'@name scrape.SpiegelArticle
+#'@title scrapes an article off of spiegel.com
 #'@description Scrapes article date, content, and summary from spiegel article
-#'@param string containing url of function
+#'@param url string of article url
 scrape.SpiegelArticle <- function(url) {
   article <- read_html(url)
   date <- html_nodes(".article-function-date")

@@ -1,10 +1,10 @@
-#' @rdname ZeitOnline
 #' @author Anthony Ramos, Simon Munzert, Pablo Barbera
 #' @export
 
 #' @title
 #' Packages for scraping articles from Zeit Online
 
+#' @title Scrape headlines from Zeit Online
 #' @description This function takes the headlines off of ZeitOnline and returns a dataFrame with two
 #' columns, titles and links.
 #' 
@@ -24,7 +24,6 @@ scrape.ZeitHeadlines <- function()
 #' @description
 #' This function takes the title, summary, and main text from an article from Zeit Online, and returns
 #' a vector with the date,title, and summary.
-#' @rdname ZeitOnline
 #' @param string containing URL of article from ZeitOnline
 #'
 #' @details
