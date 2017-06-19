@@ -7,8 +7,7 @@
 
 #' @description This function takes the headlines off of ZeitOnline and returns a dataFrame with two
 #' columns, titles and links.
-
-#' @param none
+#' 
 #' @export
 scrape.ZeitHeadlines <- function()
 {
@@ -21,11 +20,12 @@ scrape.ZeitHeadlines <- function()
   return(Titles.Links)
 }
 
-
-#' @param string containing URL of article from ZeitOnline
+#' @title scrapeZeitArticles
 #' @description
 #' This function takes the title, summary, and main text from an article from Zeit Online, and returns
 #' a vector with the date,title, and summary.
+#' @rdname ZeitOnline
+#' @param string containing URL of article from ZeitOnline
 #'
 #' @details
 #' Return values will eventually contain main text

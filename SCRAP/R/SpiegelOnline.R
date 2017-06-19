@@ -1,12 +1,9 @@
-#' @rdname SpiegelOnline.R
-
+#' @rdname Spiegel
 #' @title Package for Scraping articles off of spiegel online
 
 
-
+#' @name scrape.SpiegelOnline
 #' @description scrapes headlines off of spiegel online home page
-#' @params none
-#'
 scrape.SpiegelOnline <- function() {
 
   require(rvest)
@@ -19,6 +16,8 @@ scrape.SpiegelOnline <- function() {
   doc %>% html_nodes(".column-wide h2 a") %>% xml_attr("title")
 }
 
+#' @rdname Spiegel
+#'@name scrape.SpiegelArticle
 #'@description Scrapes article date, content, and summary from spiegel article
 #'@param string containing url of function
 scrape.SpiegelArticle <- function(url) {
