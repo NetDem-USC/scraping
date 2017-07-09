@@ -30,9 +30,9 @@
 #' @description takes a vector of URLs, parses them, and classifies them by category
 #' @params vector of urls
 classify_urls_new <- function(urls) {
-  new_df <- data.frame()
-  urls_df <- parse_urls(urls,new_df)
+  urls_df <- parse_urls(urls$url,urls)
   urls_df$category <- fill('NA',len(urls_df$domain))
+  ClassifyDF <- read.csv('Insert location of CSV with that data here')
   for(i in len(urls_df$domain))
     Cat <- ClassifyDF[ClassifyDF$domain == urls_df$domain[i]]$Category
     if(length(Cat) > 1){

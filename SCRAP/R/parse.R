@@ -8,7 +8,7 @@
 parse_urls <- function(urls,url_df)
 {
   url_df <- url_parse(urls)
-  url_df$full_url <- urls
+  url_df$url <- urls
   return(url_df)
 }
 
