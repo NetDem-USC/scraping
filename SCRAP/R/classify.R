@@ -21,10 +21,6 @@
 
 #' @param urls Vector with URLs.
 
-#' @import urltools
-#' @importFrom digest digest
-#' @import stringr
-#' 
 
 classify_urls <- function(urls) {
 

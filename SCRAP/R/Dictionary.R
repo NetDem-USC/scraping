@@ -2,9 +2,6 @@
 #' @description Uses both the aws.alexa api and web scraping to get news categories for websites
 #' @param path path to be scraped
 
-#' @import aws.alexa
-#' @import rvest
-
 getAlexa <- function(path="Top/News") {
   Top.News.SubCategories <- browse_categories(path=path)
   Top.News.SubCategories <- Top.News.SubCategories[Top.News.SubCategories$total_listing_count != 0,]

@@ -2,16 +2,16 @@
 % Please edit documentation in R/ZeitOnline.R
 \name{scrapeZeitArticles}
 \alias{scrapeZeitArticles}
-\title{scrapeZeitArticles}
+\title{Scrape individual articles from the Zeit Online website}
 \usage{
 scrapeZeitArticles(url)
 }
 \arguments{
-\item{string}{containing URL of article from ZeitOnline}
+\item{url}{string containing URL of article from ZeitOnline}
 }
 \description{
-This function takes the title, summary, and main text from an article from Zeit Online, and returns
-a vector with the date,title, and summary.
+This function takes a URL from an article from Zeit Online, and returns
+a data frame with the URL, date, title, comments, summary, and text.
 }
 \details{
 Return values will eventually contain main text

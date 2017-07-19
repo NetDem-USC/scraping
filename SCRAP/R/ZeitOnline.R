@@ -1,43 +1,69 @@
-#' @author Anthony Ramos, Simon Munzert, Pablo Barbera
+#' @rdname scrapeZeitHeadlines
 #' @export
 
 #' @title
-#' Packages for scraping articles from Zeit Online
+#' Scrape homepage of Zeit Online
+
+#' @author Anthony Ramos, Simon Munzert, Pablo Barbera
 
 #' @title Scrape headlines from Zeit Online
 #' @description This function takes the headlines off of ZeitOnline and returns a dataFrame with two
-#' columns, titles and links.
+#' columns: titles and URLs.
 #' 
-#' @export
-scrape.ZeitHeadlines <- function()
+
+scrapeZeitHeadlines <- function()
 {
-  require(rvest)
   ZeitHome <- read_html("http://www.zeit.de")
-  titles_nodes <- html_nodes(ZeitHome,".teaser-small__combined-link, .teaser-fullwidth__media-link, .teaser-large__combined-link")
+  nodes <- paste0(".teaser-fullwidth__title, .teaser-small__combined-link, ",
+      ".teaser-fullwidth__media-link, .teaser-large__combined-link")
+  title_nodes <- html_nodes(ZeitHome, nodes)
   titles <- xml_attr(title_nodes,"title")
-  links <- xml_attr(title_nodes,"title")
-  Titles.Links <- data.frame(titles=titles,links=links)
-  return(Titles.Links)
+  links <- xml_attr(title_nodes,"href")
+  df <- data.frame(title=titles, url=links, 
+    time=as.character(Sys.time()), stringsAsFactors=F)
+  df <- df[!is.na(df$url),]
+  return(df)
 }
 
-#' @title scrapeZeitArticles
+#' @rdname scrapeZeitArticles
+#' @export
+#' @title Scrape individual articles from the Zeit Online website
+
 #' @description
-#' This function takes the title, summary, and main text from an article from Zeit Online, and returns
-#' a vector with the date,title, and summary.
-#' @param string containing URL of article from ZeitOnline
-#'
+#' This function takes a URL from an article from Zeit Online, and returns
+#' a data frame with the URL, date, title, comments, summary, and text.
+
+#' @param url string containing URL of article from ZeitOnline
+
 #' @details
 #' Return values will eventually contain main text
-#' @export
+
 scrapeZeitArticles <- function(url)
 {
 
   article <- read_html(url)
-  date <- xml_attr(html_nodes(article, ".metadata__date"),"datetime")
-  title <- html_text(html_nodes(article,".article-heading__title"))
-  summary <- html_text(html_nodes(article,".summary"))
-  main_text <- html_text(html_nodes(article,".paragraph"))
-  return(c(date,title,summary))
+
+  date <- html_text(html_nodes(article, ".meta, .metadata__date"))
+  date <- gsub("^ *", "", gsub("\n", "", date))
+
+  title <- html_text(html_nodes(article,".article-heading__title, .headline__title"))
+
+  comments <- html_text(html_nodes(article, "#js-article .js-scroll"))
+  comments <- gsub("^ *| *$", "", gsub("\n", "", comments))
+  comments <- gsub(" {2,}", " ", comments)
+
+  summary <- html_text(html_nodes(article,".summary, .header-article__subtitle"))
+  summary <- gsub("^ *| *$", "", gsub("\n", "", summary))
+  summary <- gsub(" {2,}", " ", summary)
+
+  text <- html_text(html_nodes(article,".paragraph"))
+  text <- paste(text, collapse="\n\n")
+
+  df <- data.frame(
+    url, date, title, comments, summary, text, 
+    stringsAsFactors=F)
+
+  return(df)
 
 }
 
