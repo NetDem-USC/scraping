@@ -25,20 +25,6 @@
 #' @importFrom digest digest
 #' @import stringr
 #' 
-#' 
-#' @title classify_urls
-#' @description takes a vector of URLs, parses them, and classifies them by category
-#' @params vector of urls
-classify_urls_new <- function(urls) {
-  urls_df <- parse_urls(urls$url,urls)
-  urls_df$category <- fill('NA',len(urls_df$domain))
-  ClassifyDF <- read.csv('Insert location of CSV with that data here')
-  for(i in len(urls_df$domain))
-    Cat <- ClassifyDF[ClassifyDF$domain == urls_df$domain[i]]$Category
-    if(length(Cat) > 1){
-      urls_df[i,'category'] <- Cat[1]
-    }
-}
 
 classify_urls <- function(urls) {
 
@@ -71,4 +57,22 @@ classify_urls <- function(urls) {
   urls_df$isNews <- str_detect(urls_df$domain, "cnn.com|huffingtonpost.com|washingtonpost.com|nytimes.com|foxnews.com|dailykos.com|drudgereport.com|breitbart.com|spiegel.de|sueddeutsche.de|focus.de|bild.de|zeit.de|welt.de|t-online.de")
   # return output
   return(urls_df)
+}
+
+
+#' 
+#' @title classify_urls_new
+#' @description takes a vector of URLs, parses them, and classifies them by category
+#' @param url vector of urls
+#' @export
+
+classify_urls_new <- function(urls) {
+  urls_df <- parse_urls(urls$url,urls)
+  urls_df$category <- fill('NA',len(urls_df$domain))
+  ClassifyDF <- read.csv('Insert location of CSV with that data here')
+  for(i in len(urls_df$domain))
+    Cat <- ClassifyDF[ClassifyDF$domain == urls_df$domain[i]]$Category
+    if(length(Cat) > 1){
+      urls_df[i,'category'] <- Cat[1]
+    }
 }
