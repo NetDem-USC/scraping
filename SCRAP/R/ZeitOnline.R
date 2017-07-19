@@ -21,7 +21,8 @@ scrapeZeitHeadlines <- function()
   links <- xml_attr(title_nodes,"href")
   df <- data.frame(title=titles, url=links, 
     time=as.character(Sys.time()), stringsAsFactors=F)
-  df <- df[!is.na(df$url),]
+  df <- df[!is.na(df$url),] # removing empty URLs
+  df <- df[!duplicated(df$url),] # removing duplicated URLs
   return(df)
 }
 
@@ -43,10 +44,10 @@ scrapeZeitArticles <- function(url)
 
   article <- read_html(url)
 
-  date <- html_text(html_nodes(article, ".meta, .metadata__date"))
-  date <- gsub("^ *", "", gsub("\n", "", date))
+  date <- html_text(html_nodes(article, ".meta, .metadata__date, .entry-meta"))
+  date <- gsub("^ *", "", gsub("\n|\t", "", date))
 
-  title <- html_text(html_nodes(article,".article-heading__title, .headline__title"))
+  title <- html_text(html_nodes(article,".article-heading__title, .headline__title, .entry-title"))
 
   comments <- html_text(html_nodes(article, "#js-article .js-scroll"))
   comments <- gsub("^ *| *$", "", gsub("\n", "", comments))
@@ -56,11 +57,12 @@ scrapeZeitArticles <- function(url)
   summary <- gsub("^ *| *$", "", gsub("\n", "", summary))
   summary <- gsub(" {2,}", " ", summary)
 
-  text <- html_text(html_nodes(article,".paragraph"))
+  text <- html_text(html_nodes(article,".paragraph, .entry-content p"))
   text <- paste(text, collapse="\n\n")
 
   df <- data.frame(
-    url, date, title, comments, summary, text, 
+    url, date, title, comments=ifelse(length(comments==0), NA, comments), 
+    summary=ifelse(length(summary==0), NA, summary), text, 
     stringsAsFactors=F)
 
   return(df)
