@@ -61,8 +61,8 @@ scrapeZeitArticles <- function(url)
   text <- paste(text, collapse="\n\n")
 
   df <- data.frame(
-    url, date, title, comments=ifelse(length(comments==0), NA, comments), 
-    summary=ifelse(length(summary==0), NA, summary), text, 
+    url, date, title, comments=ifelse(length(comments)==0, NA, comments), 
+    summary=ifelse(length(summary)==0, NA, summary), text, 
     stringsAsFactors=F)
 
   return(df)
