@@ -11,7 +11,7 @@ scrapeSpiegelOnline <- function() {
   title=html_nodes(doc,".article-title a")
   titles = xml_attr(title,"title")
   title_links = xml_attr(title,"href")
-  df <- data.frame(title=titles, url=title_links, 
+  df <- data.frame(title=titles, url=paste0("http://www.spiegel.de", title_links), 
                    time=as.character(Sys.time()), stringsAsFactors=F)
   df <- df[!is.na(df$url),]
   df <- df[!duplicated(df$url),]
@@ -33,7 +33,7 @@ scrapeSpiegelArticle <- function(url) {
   article_title <- paste(article_intro,article_title,sep=": ")
   
   date <- html_text(html_nodes(article,".article-function-date"))[1]
-  date <- gsub("\t", "", gsub("\r", "", date))
+  date <- gsub("\t|\n|\r", "", gsub("\r", "", date))
   
   content <- html_text(html_nodes(article,"p"))
   summary <- content[1]
@@ -44,7 +44,8 @@ scrapeSpiegelArticle <- function(url) {
   summary <- gsub("^ *| *$", "", gsub("\n", "", summary))
   summary <- gsub(" {2,}", " ", summary)
   
-  comments = grep("insgesamt (.*) Beiträge",html_text(html_nodes("span"),value=TRUE))
+  comments <- grep("insgesamt (.*) Beiträge",html_text(html_nodes(article, "span")),value=TRUE)
+  comments <- gsub("^ *", "", gsub("\r|\n|\t", "", comments))
   
   
   article_df <- data.frame(date=date,summary=summary,
