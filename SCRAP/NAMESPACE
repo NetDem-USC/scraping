@@ -3,6 +3,8 @@
 export(classify_urls)
 export(classify_urls_new)
 export(parse_urls)
+export(scrapeSpiegelArticle)
+export(scrapeSpiegelOnline)
 export(scrapeZeitArticles)
 export(scrapeZeitHeadlines)
 import(aws.alexa)

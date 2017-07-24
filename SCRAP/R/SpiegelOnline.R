@@ -1,11 +1,11 @@
+#' @rdname scrapeSpiegelOnline
+#' @export
 
+#' @title Scrape homepage of Spiegel Online
+#' @description scrapes headlines off of Spiegel Online home page
 
+scrapeSpiegelOnline <- function() {
 
-#' @title scrape.SpiegelOnline
-#' @description scrapes headlines off of spiegel online home page
-scrape.SpiegelOnline <- function() {
-
-  require(rvest)
   doc <-read_html("http://www.spiegel.de/")
   #get main articles
   title=html_nodes(doc,".article-title a")
@@ -19,10 +19,13 @@ scrape.SpiegelOnline <- function() {
   return(df)
 }
 
+#' @rdname scrapeSpiegelArticle
+#' @export
 #'@title scrapes an article off of spiegel.com
 #'@description Scrapes article date, content, and summary from spiegel article
 #'@param url string of article url
-scrape.SpiegelArticle <- function(url) {
+
+scrapeSpiegelArticle <- function(url) {
   
   article <- read_html(url)
   article_intro <- html_text(html_nodes(article,".headline-intro"))[1]
@@ -46,7 +49,7 @@ scrape.SpiegelArticle <- function(url) {
   
   article_df <- data.frame(date=date,summary=summary,
                            headline=article_title,text=content,
-                           comments=ifelse(length(comments)==0, NA, comments)
+                           comments=ifelse(length(comments)==0, NA, comments),
                            stringsAsFactors=F)
                            
   return(article_df)
