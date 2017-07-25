@@ -4,10 +4,12 @@
 \alias{scrapeSpiegelArticle}
 \title{scrapes an article off of spiegel.com}
 \usage{
-scrapeSpiegelArticle(url)
+scrapeSpiegelArticle(url, path)
 }
 \arguments{
 \item{url}{string of article url}
+
+\item{path}{Path where file will be stored}
 }
 \description{
 Scrapes article date, content, and summary from spiegel article

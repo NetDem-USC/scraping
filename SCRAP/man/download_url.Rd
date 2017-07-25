@@ -4,10 +4,12 @@
 \alias{download_url}
 \title{Download URLs}
 \usage{
-download_url(url)
+download_url(url, path)
 }
 \arguments{
-\item{string}{of url, string of file name}
+\item{url}{string of url, string of file name}
+
+\item{path}{Path where html file will be stored}
 }
 \description{
 downloads the HTML of URLs into a given file name

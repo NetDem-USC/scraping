@@ -12,16 +12,21 @@ parse_urls <- function(urls,url_df)
   return(url_df)
 }
 
+#' @rdname download_url
+#' @export
 
 #' @title Download URLs
 #' @description downloads the HTML of URLs into a given file name
-#' @param string of url, string of file name
-download_url <- function(url) {
+#' @param url string of url, string of file name
+#' @param path Path where html file will be stored
+
+download_url <- function(url, path) {
   # packages
   require(curl)
   h <- new_handle()
-  curl_download(url, paste0("~/Desktop/",gsub('/',"-",url),".txt"), handle = h)
+  curl_download(url, path, handle = h)
 }
+
 #' @title Parallel Download URLs
 #' @description removes a vector of URLS in parallel, by default uses 2 cores for a dual-core processor
 #' @param a vector of URLs

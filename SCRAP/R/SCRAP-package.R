@@ -18,6 +18,8 @@
 #' @import urltools
 #' @importFrom digest digest
 #' @import stringr
+#' @import magrittr
+#' @import xml2
 
 NULL
 
