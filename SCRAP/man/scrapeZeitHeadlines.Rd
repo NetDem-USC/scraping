@@ -4,7 +4,10 @@
 \alias{scrapeZeitHeadlines}
 \title{Scrape homepage of Zeit Online}
 \usage{
-scrapeZeitHeadlines()
+scrapeZeitHeadlines(path)
+}
+\arguments{
+\item{path}{Path where file with homepage in html format will be stored}
 }
 \description{
 This function takes the headlines off of ZeitOnline and returns a dataFrame with two
