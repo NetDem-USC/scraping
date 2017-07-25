@@ -20,6 +20,8 @@
 #' @import stringr
 #' @import magrittr
 #' @import xml2
+#' @import httr
+#' @import R.utils
 
 NULL
 

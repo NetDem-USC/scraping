@@ -10,5 +10,5 @@ scrapeSpiegelRSS(folder)
 \item{path}{Path where file with homepage in html format will be stored}
 }
 \description{
-scrapes RSS feeds of of Spiegel Online home page
+scrapes RSS feeds of Spiegel Online home page
 }
