@@ -13,8 +13,7 @@ classify_urls(urls)
 This function takes a vector of URLs and will use a dictionary
 of domains to classify into different types: survey platforms,
 mail, google, social media, etc. and most importantly, news sites.
-}
-\details{
+
 Eventually, we will have an argument that will contain a dictionary of
 URL domains and their corresponding type. For now, everything is
 just hard-coded in the function.
