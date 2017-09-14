@@ -92,7 +92,6 @@ scrapeZeitRSS <- function(folder) {
                  "http://newsfeed.zeit.de/wissen/index",
                  "http://newsfeed.zeit.de/digital/index",
                  "http://newsfeed.zeit.de/sport/index",
-                 "http://newsfeed.zeit.de/karriere/index",
                  "http://newsfeed.zeit.de/entdecken/index",
                  "http://newsfeed.zeit.de/mobilitaet/index",
                  "http://newsfeed.zeit.de/all")
