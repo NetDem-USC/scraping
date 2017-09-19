@@ -25,7 +25,6 @@ scrapeFreitagHeadlines <- function(path)
 scrapeFreitagArticle <- function(url, path)
 {
   
-  url <- "https://www.freitag.de/autoren/michael-jaeger/von-russland-lernen-1"
   html <- download.file(url,  destfile = path)
   article <- read_html(path)
   
