@@ -35,17 +35,18 @@ scrapeFreitagArticle <- function(url, path)
   title <- gsub("\n +|\\s[^A-Za-z]+$","", title)
   
   
-  comments <- 0
-  # comments <- gsub("^ *| *$", "", gsub("\n", "", comments))
-  # comments <- gsub(" {2,}", " ", comments)
-  
-  summary <- html_text(html_nodes(article,"div.abstract.column"))
-  summary <- gsub("\n +|\\s[^A-Za-z]+$","", summary)
-  
-  
-  text <- html_text(html_nodes(article,".column, .s-article-text, .x-article-text, .js-dynamic-advertorial, .js-external-links"))
-  text <- text[9:length(text)]
-  text <- paste(text, collapse="\n\n")
+comments <- html_text(html_nodes(article, "a"))[38]
+comments <- gsub("^ *| *$", "", gsub("\n", "", comments))
+
+summary <- html_text(html_nodes(article,"div.abstract.column"))
+summary <- gsub("\n +|\\s[^A-Za-z]+$","", summary)
+
+
+text <- html_text(html_nodes(article,".column, .s-article-text, .x-article-text, .js-dynamic-advertorial, .js-external-links"))
+text <- text[9:length(text)]
+text <- paste(text, collapse="\n\n")
+text <- gsub("\n","",text)
+text <- gsub("  +", "", text)
   
   df <- data.frame(
     url, date, title, comments=ifelse(length(comments)==0, NA, comments), 
