@@ -1,3 +1,18 @@
+
+#' @rdname scrapeFazHeadlines
+#' @export
+
+#' @title
+#' Scrape homepage of Frankfurter Allgemeine
+
+#' @author Simon Munzert, Pablo Barbera, Joshua Timm
+
+#' @title Scrape headlines from Frankfurter Allgemeine
+#' @description This function takes the headlines off of Frankfurter Allgemeine and returns a dataFrame with two
+#' columns: titles and URLs.
+#' 
+#' @param path Path where file with homepage in html format will be stored
+
 scrapeFreitagHeadlines <- function(path)
 {
   html <- download.file("http://www.Freitag.de", destfile =path)
