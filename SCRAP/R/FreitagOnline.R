@@ -2,7 +2,6 @@ scrapeFreitagHeadlines <- function(path)
 {
   html <- download.file("http://www.Freitag.de", destfile =path)
   FreitagHome <-read_html(path)
-  nodes <- paste0("h3, c-article-card__title, js-article-card-url qa-article-title")
   nodes <- paste0("h3")
   title_nodes <- html_nodes(FreitagHome, nodes)
   titles <- html_text(title_nodes)
