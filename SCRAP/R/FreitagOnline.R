@@ -31,7 +31,6 @@ scrapeFreitagHeadlines <- function(path)
   df <- df[!is.na(df$url),] # removing empty URLs
   df <- df[!duplicated(df$url),] # removing duplicated URLs
   df <- subset(df, subset = (df$url != "<h3 class="))
-  View(df)
   return(df)
 }
 
