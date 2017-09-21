@@ -76,18 +76,13 @@ scrapeJungefreiheitArticle <- function(url, path)
 
 scrapeJungefreiheitRSS <- function(folder) {
   # get RSS
-  rss_feeds <- c("https://jungefreiheit.de/kategorie/politik/index.rss",
-                 "https://jungefreiheit.de/kategorie/wirtschaft/index.rss",
-                 "https://jungefreiheit.de/kategorie/kultur/index.rss",
-                 "https://jungefreiheit.de/kategorie/wissen/index.rss",
-                 "https://jungefreiheit.de/kategorie/debatte/index.rss",
-                 "https://jungefreiheit.de/service/archiv/index.rss")
-  rss_out_list <- lapply(rss_feeds, read_xml)
+  rss_feeds <- "https://jungefreiheit.de/feed/"
+  rss_out <- read_xml(rss_feeds)
   # write raw RSS
   dir.create(folder, showWarnings = FALSE, recursive = TRUE)
   datetime <- format(as.POSIXct(Sys.time(), tz = Sys.timezone()), usetz = TRUE)  %>% as.character() %>% str_replace_all("[ :]", "-")
   rss_feeds <- rss_feeds %>% str_replace(fixed("index.rss"), "")
-  filepaths <-paste0(folder, "/Jungefreiheit-", datetime, "-", basename(rss_feeds), ".rss")
+  filepaths <-paste0(folder, "/rss/Jungefreiheit-", datetime, "-", basename(rss_feeds), ".rss")
   Map(function(x, filepath) write_xml(x, file = filepath, w, options = "format"), rss_out_list, filepaths)
 }
 

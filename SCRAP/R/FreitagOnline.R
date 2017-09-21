@@ -49,8 +49,8 @@ scrapeFreitagArticle <- function(url, path)
   html <- download.file(url,  destfile = path)
   article <- read_html(path)
   
-  date <- html_text(html_nodes(article, "span.issue"))
-  date <- gsub("/", ",", date)
+  date <- html_text(html_nodes(article, "span.issue,.effective-date"))
+  date <- str_trim(gsub("/|,|\n", "", date))
   
   
   title <- html_text(html_nodes(article, "h1.title"))
