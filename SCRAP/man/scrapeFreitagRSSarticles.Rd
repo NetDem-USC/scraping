@@ -4,7 +4,7 @@
 \alias{scrapeFreitagRSSarticles}
 \title{Scrape articles from RSS feeds of Freitag}
 \usage{
-scrapeFreitagRSSarticles(folderInput, folderOutput)
+scrapeFreitagRSSarticles(folderInput, folderOutput, donefile)
 }
 \arguments{
 \item{folderInput}{Folder where files with RSS feeds are located}

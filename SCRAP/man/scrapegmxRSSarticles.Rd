@@ -4,12 +4,14 @@
 \alias{scrapegmxRSSarticles}
 \title{Scrape articles from RSS feeds of GMX}
 \usage{
-scrapegmxRSSarticles(folderInput, folderOutput)
+scrapegmxRSSarticles(folderInput, folderOutput, donefile)
 }
 \arguments{
 \item{folderInput}{Folder where files with RSS feeds are located}
 
 \item{folderOutput}{Folder where articles in html format will be stored}
+
+\item{donefile}{File with URLs that have already been downloaded}
 
 \item{donefile}{File with URLs that have already been downloaded}
 }

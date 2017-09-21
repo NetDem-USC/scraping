@@ -106,7 +106,7 @@ scrapeFreitagRSS <- function(folder) {
 #' @param donefile File with URLs that have already been downloaded
 
 
-scrapeFreitagRSSarticles <- function(folderInput, folderOutput) {
+scrapeFreitagRSSarticles <- function(folderInput, folderOutput, donefile) {
   # import xmls
   xmls <- list.files(folderInput, pattern = "freitag.+rss$", full.names = TRUE)
   xmls <- xmls[(length(xmls)-1):length(xmls)] # pick only newest files
@@ -115,12 +115,20 @@ scrapeFreitagRSSarticles <- function(folderInput, folderOutput) {
   # download article htmls
   dir.create(folderOutput, showWarnings = FALSE, recursive = TRUE)
   urls_articles <- urls_parsed %>% unlist 
+  # excluding URLs already downloaded
+  if (file.exists(donefile)) done <- scan(donefile, what="character") 
+  if (!file.exists(donefile)) done <- c()
+  out <- file(donefile, "a")
+  urls_articles <- urls_articles[urls_articles %in% done == FALSE]
+
   sapply(urls_articles, function(x){
-    destfile <- paste0(folderOutput, "/", basename(x), ".html")
-    if(!file.exists(destfile)) {
-      evalWithTimeout({try(download.file(x, destfile = destfile, method = "libcurl"))},
-                      timeout = 10,
-                      onTimeout = "silent")
-    }
+      destfile <- paste0(folderOutput, "/", basename(x))
+      if(!file.exists(destfile)) {
+        res <- evalWithTimeout({try(download.file(x, destfile = destfile, method = "libcurl"))},
+                        timeout = 10,
+                        onTimeout = "silent")
+        if (!is.null(res)){writeLines(x, con=out)}
+      }
   })
+  close(out)
 }

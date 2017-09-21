@@ -113,9 +113,10 @@ scrapegmxRSS <- function(folder) {
 #' @param folderInput Folder where files with RSS feeds are located
 #' @param folderOutput Folder where articles in html format will be stored
 #' @param donefile File with URLs that have already been downloaded
+#' @param donefile File with URLs that have already been downloaded
 
 
-scrapegmxRSSarticles <- function(folderInput, folderOutput) {
+scrapegmxRSSarticles <- function(folderInput, folderOutput, donefile) {
   # import xmls
   xmls <- list.files(folderInput, pattern = "gmx.+rss$", full.names = TRUE)
   xmls <- xmls[(length(xmls)-11):length(xmls)] # pick only newest files
@@ -124,12 +125,26 @@ scrapegmxRSSarticles <- function(folderInput, folderOutput) {
   # download article htmls
   dir.create(folderOutput, showWarnings = FALSE, recursive = TRUE)
   urls_articles <- urls_parsed %>% unlist 
+
+  # excluding URLs already downloaded
+  if (file.exists(donefile)) done <- scan(donefile, what="character") 
+  if (!file.exists(donefile)) done <- c()
+  out <- file(donefile, "a")
+  urls_articles <- urls_articles[urls_articles %in% done == FALSE]
+
   sapply(urls_articles, function(x){
     destfile <- paste0(folderOutput, "/", basename(x), ".html")
     if(!file.exists(destfile)) {
-      evalWithTimeout({try(download.file(x, destfile = destfile, method = "libcurl"))},
-                      timeout = 10,
-                      onTimeout = "silent")
+        res <- evalWithTimeout({try(download.file(x, destfile = destfile, method = "libcurl"))},
+                        timeout = 10,
+                        onTimeout = "silent")
+        if (!is.null(res)){writeLines(x, con=out)}
     }
   })
+  close(out)
 }
+
+
+
+
+
