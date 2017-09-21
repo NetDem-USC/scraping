@@ -82,7 +82,7 @@ scrapeJungefreiheitRSS <- function(folder) {
   dir.create(folder, showWarnings = FALSE, recursive = TRUE)
   datetime <- format(as.POSIXct(Sys.time(), tz = Sys.timezone()), usetz = TRUE)  %>% as.character() %>% str_replace_all("[ :]", "-")
   rss_feeds <- rss_feeds %>% str_replace(fixed("index.rss"), "")
-  filepaths <-paste0(folder, "/rss/Jungefreiheit-", datetime, "-", basename(rss_feeds), ".rss")
+  filepaths <-paste0(folder, "/Jungefreiheit-", datetime, "-", basename(rss_feeds), ".rss")
   Map(function(x, filepath) write_xml(x, file = filepath, w, options = "format"), rss_out_list, filepaths)
 }
 
@@ -98,7 +98,7 @@ scrapeJungefreiheitRSS <- function(folder) {
 scrapeJungefreiheitRSSarticles <- function(folderInput, folderOutput, donefile) {
   # import xmls
   xmls <- list.files(folderInput, pattern = "Jungefreiheit.+rss$", full.names = TRUE)
-  xmls <- xmls[(length(xmls)-11):length(xmls)] # pick only newest files
+  xmls <- xmls[length(xmls)] # pick only newest file
   xmls_parsed <- lapply(xmls, read_xml)
   urls_parsed <- lapply(xmls_parsed, function(x) { xml_nodes(x, "link") %>% xml_text}) %>% unlist %>% unique()
   # download article htmls
