@@ -1,14 +1,14 @@
 
-#' @rdname scrapeFazHeadlines
+#' @rdname scrapeFreitagHeadlines
 #' @export
 
 #' @title
-#' Scrape homepage of Frankfurter Allgemeine
+#' Scrape homepage of Freitag
 
 #' @author Simon Munzert, Pablo Barbera, Joshua Timm
 
-#' @title Scrape headlines from Frankfurter Allgemeine
-#' @description This function takes the headlines off of Frankfurter Allgemeine and returns a dataFrame with two
+#' @title Scrape headlines from Freitag
+#' @description This function takes the headlines off of Freitag and returns a dataFrame with two
 #' columns: titles and URLs.
 #' 
 #' @param path Path where file with homepage in html format will be stored
@@ -35,6 +35,14 @@ scrapeFreitagHeadlines <- function(path)
   return(df)
 }
 
+
+#' @rdname scrapeFreitagArticle
+#' @export
+
+#' @title scrapes an article off of freitag.de
+#' @description Scrapes article date, content, and summary from freitag article
+#' @param url string of article url
+#' @param path Path where file will be stored 
 
 scrapeFreitagArticle <- function(url, path)
 {
@@ -69,6 +77,13 @@ text <- gsub("  +", "", text)
     stringsAsFactors=F)
 }
 
+#' @rdname scrapeFreitagRSS
+#' @export
+#' @title Scrape RSS feeds of Freitag
+#' @description scrapes RSS feeds of Freitag home page
+#' @param path Path where file with homepage in html format will be stored
+
+
 scrapeFreitagRSS <- function(folder) {
   # get RSS
   rss_feeds <- c("https://www.freitag.de/@@RSS",
@@ -81,6 +96,15 @@ scrapeFreitagRSS <- function(folder) {
   filepaths <-paste0(folder, "/freitag-", datetime, "-", basename(rss_feeds), ".rss")
   Map(function(x, filepath) write_xml(x, file = filepath, w, options = "format"), rss_out_list, filepaths)
 }
+
+
+#' @rdname scrapeFreitagRSSarticles
+#' @export
+#' @title Scrape articles from RSS feeds of Freitag
+#' @description scrapes articles from RSS feeds of Freitag home page
+#' @param folderInput Folder where files with RSS feeds are located
+#' @param folderOutput Folder where articles in html format will be stored
+#' @param donefile File with URLs that have already been downloaded
 
 
 scrapeFreitagRSSarticles <- function(folderInput, folderOutput) {

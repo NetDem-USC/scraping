@@ -1,4 +1,17 @@
 
+#' @rdname scrapegmxHeadlines
+#' @export
+
+#' @title
+#' Scrape homepage of GMX
+
+#' @author Simon Munzert, Pablo Barbera, Joshua Timm
+
+#' @title Scrape headlines from GMX
+#' @description This function takes the headlines off of GMX and returns a dataFrame with two
+#' columns: titles and URLs.
+#' 
+#' @param path Path where file with homepage in html format will be stored
 
 scrapegmxHeadlines <- function(path)
 {
@@ -26,6 +39,14 @@ scrapegmxHeadlines <- function(path)
   return(df)
 }
 
+
+#' @rdname scrapegmxArticle
+#' @export
+
+#' @title scrapes an article off of gmx.de
+#' @description Scrapes article date, content, and summary from GMX article
+#' @param url string of article url
+#' @param path Path where file will be stored 
 
 scrapegmxArticle <- function(url, path)
 {
@@ -55,6 +76,13 @@ scrapegmxArticle <- function(url, path)
     stringsAsFactors=F)
 }
 
+#' @rdname scrapegmxRSS
+#' @export
+#' @title Scrape RSS feeds of GMX
+#' @description scrapes RSS feeds of GMX home page
+#' @param path Path where file with homepage in html format will be stored
+
+
 scrapegmxRSS <- function(folder) {
   # get RSS
   rss_feeds <- c("https://www.gmx.net/feeds/rss/magazine/index.rss",
@@ -78,7 +106,13 @@ scrapegmxRSS <- function(folder) {
   Map(function(x, filepath) write_xml(x, file = filepath, w, options = "format"), rss_out_list, filepaths)
 }
 
-
+#' @rdname scrapegmxRSSarticles
+#' @export
+#' @title Scrape articles from RSS feeds of GMX
+#' @description scrapes articles from RSS feeds of GMX home page
+#' @param folderInput Folder where files with RSS feeds are located
+#' @param folderOutput Folder where articles in html format will be stored
+#' @param donefile File with URLs that have already been downloaded
 
 
 scrapegmxRSSarticles <- function(folderInput, folderOutput) {
